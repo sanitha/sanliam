@@ -1,0 +1,51 @@
+%aside.fixed.skin-6
+  .slimScrollDiv{:style => "position: relative; overflow: hidden; width: auto; height: 100%;"}
+    .sidebar-inner.scrollable-sidebar{:style => "overflow: hidden; width: auto; height: 100%;"}
+      .size-toggle
+        %a#sizeToggle.btn.btn-sm
+          %span.icon-bar
+          %span.icon-bar
+          %span.icon-bar
+        %a#open_4718948.btn.btn-sm.pull-right.logoutConfirm_open{"data-popup-ordinal" => "1", :href => logout_path}
+          %i.fa.fa-power-off
+      / /size-toggle
+      .user-block.clearfix
+        %img{:alt => "User Avatar", :src => "http://placehold.it/100x80"}
+          .detail
+            %strong= current_user.full_name.titlecase
+      / /user-block
+      .main-menu
+        %ul
+          %li{:class => is_active?(dashboards_path)}
+            %a{:href => dashboards_path}
+              %span.menu-icon
+                %i.fa.fa-dashboard.fa-lg
+              %span.text
+                Dashboard
+          %li{:class => is_active?(user_root_path),id: "profile-link"}    
+            %a{:href => user_root_path}
+              %span.menu-icon
+                %i.fa.fa-pencil-square-o.fa-lg
+              %span.text
+                Profile
+          %li{:class => is_active?(wedding_halls_path),id: "profile-link"}    
+            %a{:href => wedding_halls_path}
+              %span.menu-icon
+                %i.fa.fa-pencil-square-o.fa-lg
+              %span.text
+                Wedding Halls
+          - if current_user.admin
+            %li
+              %a{:href => admin_districts_path}
+                %span.menu-icon
+                  %i.fa.fa-sign-out.fa-lg
+                %span.text
+                  Districts
+                %span.menu-hover
+          %li
+            %a{:href => logout_path}
+              %span.menu-icon
+                %i.fa.fa-sign-out.fa-lg
+              %span.text
+                Logout
+              %span.menu-hover

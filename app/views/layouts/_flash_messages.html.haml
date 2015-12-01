@@ -1,0 +1,7 @@
+- unless flash.empty?  
+  - flash.each do |type, msg|  
+    - type = type.gsub('alert', 'error').gsub('notice', 'info') 
+    :javascript   
+      toastr.options = {"positionClass": "toast-top-left"} 
+      toastr["#{type}"]("#{msg}", "#{type}");    
+

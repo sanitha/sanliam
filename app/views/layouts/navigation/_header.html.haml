@@ -1,0 +1,38 @@
+#top-nav.fixed.skin-6
+  %a{:href => root_path, class: "navbar-brand"}
+    %span Wedding-App
+  %ul.nav-notification.clearfix 
+    - if user_signed_in?
+      %li.profile.dropdown
+        %a{"data-toggle" => "dropdown", "data-hover" => "dropdown", :href => "#"}
+          = current_user.full_name.titlecase
+          %span
+            %i.fa.fa-chevron-down
+        %ul.dropdown-menu.pull-right
+          %li
+            %a.clearfix{:href => "#"}
+              %img{:alt => "User Avatar", src: "http://placehold.it/100x80"}
+                .detail
+                  %strong
+                    = current_user.full_name.titlecase
+                  %p.grey 
+                    = current_user.email
+          %li
+            %a.main-link{:href => dashboards_path, :tabindex => "-1"}
+              %i.fa.fa-dashboard.fa-lg
+              Dashboard 
+          %li
+            %a.main-link{:href => user_root_path, :tabindex => "-2"}
+              %i.fa.fa-pencil-square-o.fa-lg
+              Profile
+                       
+          %li.divider
+          %li
+            %a.main-link.logoutConfirm_open{:href => logout_path, :tabindex => "-1"}
+              %i.fa.fa-sign-out.fa-lg
+              Log out
+    - else
+      %li.dropdown
+        %a{:href => new_user_session_path, class: "first-last-link"}
+          %span.brown-border LOGIN
+   
