@@ -1,6 +1,6 @@
 #top-nav.fixed.skin-6
   %a{:href => root_path, class: "navbar-brand"}
-    %span Wedding-App
+    %span Sanliam Online Portal
   %ul.nav-notification.clearfix 
     - if user_signed_in?
       %li.profile.dropdown
@@ -22,7 +22,7 @@
               %i.fa.fa-dashboard.fa-lg
               Dashboard 
           %li
-            %a.main-link{:href => user_root_path, :tabindex => "-2"}
+            %a.main-link{:href => edit_user_registration_path, :tabindex => "-2"}
               %i.fa.fa-pencil-square-o.fa-lg
               Profile
                        

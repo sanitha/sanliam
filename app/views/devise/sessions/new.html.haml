@@ -1,17 +1,39 @@
-%h2 Log in
-= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true
-  .field
-    = f.label :password
-    %br/
-    = f.password_field :password, autocomplete: "off"
-  - if devise_mapping.rememberable?
-    .field
-      = f.check_box :remember_me
-      = f.label :remember_me
-  .actions
-    = f.submit "Log in"
-= render "devise/shared/links"
+.login-wrapper
+  .text-center
+    %h2{:style => "font-weight:bold"}
+      %span.text-success Sanliam Online Portal
+  .login-widget
+    .panel.panel-default
+      .panel-heading.clearfix
+        .pull-left
+          %i.fa.fa-lock.fa-lg
+          Login
+        .pull-right
+          %span{:style => "font-size:11px;"} Don't have an account?
+          = link_to new_user_registration_path, class: "btn btn-default btn-xs", style: "margin-top:-2px;" do
+            %i.fa.fa-plus-circle
+            Sign up
+      .panel-body
+        = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+          - if alert.present?
+            %p.alert.alert-danger= alert
+          .form-group
+            = f.label :email
+            = f.email_field :email, placeholder: "Email", class: "form-control input-sm"
+          .form-group
+            = f.label :password
+            = f.password_field :password, autocomplete: "off", placeholder: "Password", class: "form-control input-sm"
+          - if devise_mapping.rememberable?
+            .form-group
+              %label.label-checkbox.inline
+                = f.check_box :remember_me, class: "regular-checkbox chk-delete"
+                %span.custom-checkbox.info
+              Remember me
+          .seperator
+          .form-group
+            = render "devise/shared/links"
+          .form-group
+            = f.button :submit, class: "btn btn-success btn-sm pull-right" do
+              %i.fa.fa-sign-in
+              Log in
+       

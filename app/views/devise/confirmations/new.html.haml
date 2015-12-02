@@ -1,10 +1,20 @@
-%h2 Resend confirmation instructions
-= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f|
-  = devise_error_messages!
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true, value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email)
-  .actions
-    = f.submit "Resend confirmation instructions"
-= render "devise/shared/links"
+.login-wrapper
+  .text-center
+    %h2.fadeInUp.animation-delay3{:style => "font-weight:bold"}
+      %span.text-success Sanliam Online Portal
+  .login-widget.animation-delay1
+    .panel.panel-default
+      .panel-heading.clearfix
+        .pull-left
+          %h4 Resend Confirmation Instructions
+      .panel-body
+        = form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f|
+          = devise_error_messages!
+          .form-group
+            = f.label :email
+            %br/
+            = f.email_field :email, autofocus: true, value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email), class: "form-control input-sm bounceIn"
+          .form-group
+            = f.submit "Resend Confirmation Instructions", class: "btn btn-success btn-sm bounceIn animation-delay2"
+        .form-group
+          = render "devise/shared/links"

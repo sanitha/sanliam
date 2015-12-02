@@ -22,26 +22,12 @@
                 %i.fa.fa-dashboard.fa-lg
               %span.text
                 Dashboard
-          %li{:class => is_active?(user_root_path),id: "profile-link"}    
-            %a{:href => user_root_path}
+          %li{:class => is_active?(edit_user_registration_path),id: "profile-link"}    
+            %a{:href => edit_user_registration_path}
               %span.menu-icon
                 %i.fa.fa-pencil-square-o.fa-lg
               %span.text
                 Profile
-          %li{:class => is_active?(wedding_halls_path),id: "profile-link"}    
-            %a{:href => wedding_halls_path}
-              %span.menu-icon
-                %i.fa.fa-pencil-square-o.fa-lg
-              %span.text
-                Wedding Halls
-          - if current_user.admin
-            %li
-              %a{:href => admin_districts_path}
-                %span.menu-icon
-                  %i.fa.fa-sign-out.fa-lg
-                %span.text
-                  Districts
-                %span.menu-hover
           %li
             %a{:href => logout_path}
               %span.menu-icon
